@@ -49,6 +49,7 @@
 #include <regex.h>
 #endif
 
+
 // *****************************************************************************
 // local declarations
 namespace {
@@ -136,10 +137,6 @@ int main(int argc, char* const argv[])
     textdomain(EXV_PACKAGE_NAME);
 #endif
 
-#ifdef EXV_ENABLE_BMFF
-    Exiv2::enableBMFF();
-#endif
-
     // Handle command line arguments
     Params& params = Params::instance();
     if (params.getopt(argc, argv)) {
@@ -172,7 +169,6 @@ int main(int argc, char* const argv[])
                 std::cout << _("File") << " " << std::setw(w) << std::right << n++ << "/" << s << ": " << *i
                           << std::endl;
             }
-            task->setBinary(params.binary_);
             int ret = task->run(*i);
             if (rc == 0)
                 rc = ret;
@@ -389,7 +385,7 @@ int Params::option(int opt, const std::string& optarg, int optopt)
     case 'q': Exiv2::LogMsg::setLevel(Exiv2::LogMsg::mute); break;
     case 'Q': rc = setLogLevel(optarg); break;
     case 'k': preserve_ = true; break;
-    case 'b': binary_ = true; break;
+    case 'b': binary_ = false; break;
     case 'u': unknown_ = false; break;
     case 'f': force_ = true; fileExistsPolicy_ = overwritePolicy; break;
     case 'F': force_ = true; fileExistsPolicy_ = renamePolicy; break;
