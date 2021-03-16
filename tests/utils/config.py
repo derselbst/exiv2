@@ -17,8 +17,12 @@ class Config:
     exiv2_echo        = os.environ.get('EXIV2_ECHO', '')
     verbose           = os.environ.get('VERBOSE', '')
     valgrind          = os.environ.get('VALGRIND', '')
-    platform          = sys.platform.lower() or 'unknown' # It could be linux, win32, mingw, msys, cygwin, darwin, etc.
     encoding          = 'utf-8'
+    
+    # Identify the platform
+    platform          = sys.platform.lower() or 'unknown'    # It could be linux, win32, msys, cygwin, darwin, etc.
+    if os.name == 'nt' and 'GCC' in sys.version:
+        platform = 'mingw'
 
     # set http and port for io_test
     if platform   in ['cygwin']:
