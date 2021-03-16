@@ -102,17 +102,17 @@ from system_tests import BT                 # import system_tests, which has bee
 
 class TestCases(unittest.TestCase):
     def setUp(self):
-        """ This function is executed before each test case. """
+        """ This method is executed before each test case. """
         os.makedirs(BT.Config.tmp_dir, exist_ok=True)
         os.chdir(BT.Config.tmp_dir)         # switch to the temporary directory to test
 
-    def simple_test(self):                  # define a test function
-        e = BT.Exec('exiv2 --version')  # execute a command in the shell
-        assert e.returncode == 0:
+    def simple_test(self):                  # define a test method
+        e = BT.Exec('exiv2 --version')      # execute a command in the shell
+        assert e.returncode == 0
         if 'exiv2 0.27.4.9' not in e.stdout:
             raise RuntimeError('Wrong version')
 
-    def addmoddel_test(self):               # define another test function
+    def addmoddel_test(self):               # define another test method
         jpg      = 'exiv2-empty.jpg'
         BT.copyTestFile(jpg)
         out      = BT.Output()

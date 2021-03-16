@@ -694,7 +694,7 @@ class Case(unittest.TestCase):
     inherit_env = True
 
     def setUp(self):
-        """ This function is executed before each test case. """
+        """ This method is executed before each test case. """
         pass
 
     @classmethod

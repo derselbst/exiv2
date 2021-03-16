@@ -13,13 +13,12 @@ class Config:
     ld_library_path   = os.path.join(bin_dir, '../lib')
     data_dir          = os.path.join(exiv2_dir, 'test/data')
     tmp_dir           = os.path.join(exiv2_dir, 'test/tmp')
-    
+
     exiv2_echo        = os.environ.get('EXIV2_ECHO', '')
     verbose           = os.environ.get('VERBOSE', '')
     valgrind          = os.environ.get('VALGRIND', '')
     platform          = sys.platform.lower() or 'unknown' # It could be linux, win32, mingw, msys, cygwin, darwin, etc.
     encoding          = 'utf-8'
-    bin_files         = [i.split('.')[0] for i in os.listdir(bin_dir)]
 
     # set http and port for io_test
     if platform   in ['cygwin']:
