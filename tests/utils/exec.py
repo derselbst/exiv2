@@ -54,7 +54,7 @@ class Exec:
         self.decode_output      = decode_output
 
         # Generate the args for subprocess.Popen
-        if Config.platform == 'win32':
+        if Config.platform in ['win32', 'mingw']:
             self.args   = 'cmd /c ' + self.cmd.replace('\'', '\"')
         else:
             self.args   = shlex.split(self.cmd, posix=os.name == 'posix')
